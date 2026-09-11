@@ -2,34 +2,33 @@
 
 
 
-# [Project Name] 🎯
+# THE COURTROOM 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Oddsquad
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Michelle MS - SCET
+- Member 2: Anjima CC- SCET
 
 ### Project Description
-[2-3 lines about what your project does]
+The Courtroom is an interactive digital courtroom where users present their problems, answer a few relevant questions, and await the court’s decision. The website appears to carefully analyze each case, but the final verdict takes an unexpected and completely unrelated turn—making the experience humorous, unpredictable, and intentionally useless.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Complaints that no one takes seriously also deserves a courtroom. 
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Solving problems without actually solving them
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- TypeScript
+- React.js
+- Tailwind CSS, Lucide React, React Router
+- Lovable, ChatGPT
 
 For Hardware:
 - [List main components]
@@ -39,16 +38,16 @@ For Hardware:
 ### Implementation
 For Software:
 # Installation
-[commands]
+npm install
 
 # Run
-[commands]
+npm run deb
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
+![Screqenshot1](Add screenshot 1 here with proper name)
 *Add caption explaining what this shows*
 
 ![Screenshot2](Add screenshot 2 here with proper name)
