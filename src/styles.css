@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * THE COURTROOM — design system
+ * Palette: deep burgundy, dark forest green, cream, muted gold, charcoal.
+ * All colors are oklch semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-burgundy: var(--burgundy);
+  --color-forest: var(--forest);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-charcoal: var(--charcoal);
+  --color-parchment: var(--parchment);
+  --color-seal: var(--seal);
+
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --burgundy: oklch(0.32 0.11 18);
+  --forest: oklch(0.3 0.055 155);
+  --gold: oklch(0.78 0.11 85);
+  --gold-soft: oklch(0.86 0.07 88);
+  --cream: oklch(0.95 0.02 85);
+  --charcoal: oklch(0.19 0.012 60);
+  --parchment: oklch(0.93 0.025 82);
+  --seal: oklch(0.45 0.15 20);
+
+  --background: oklch(0.16 0.012 55);
+  --foreground: oklch(0.95 0.02 85);
+  --card: oklch(0.21 0.016 55);
+  --card-foreground: oklch(0.95 0.02 85);
+  --popover: oklch(0.21 0.016 55);
+  --popover-foreground: oklch(0.95 0.02 85);
+  --primary: oklch(0.78 0.11 85);
+  --primary-foreground: oklch(0.18 0.02 60);
+  --secondary: oklch(0.3 0.055 155);
+  --secondary-foreground: oklch(0.95 0.02 85);
+  --muted: oklch(0.26 0.014 60);
+  --muted-foreground: oklch(0.74 0.02 78);
+  --accent: oklch(0.32 0.11 18);
+  --accent-foreground: oklch(0.95 0.02 85);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.97 0.01 85);
+  --border: oklch(0.34 0.02 65);
+  --input: oklch(0.3 0.018 62);
+  --ring: oklch(0.78 0.11 85);
+
+  --gradient-bench: linear-gradient(
+    160deg,
+    oklch(0.2 0.02 40) 0%,
+    oklch(0.16 0.012 55) 45%,
+    oklch(0.19 0.045 155) 100%
+  );
+  --gradient-gold: linear-gradient(100deg, var(--gold-soft), var(--gold), oklch(0.66 0.1 70));
+  --gradient-seal: radial-gradient(
+    circle at 30% 25%,
+    color-mix(in oklab, var(--gold) 45%, transparent),
+    transparent 65%
+  );
+  --shadow-court: 0 24px 60px -24px oklch(0 0 0 / 0.75);
+  --shadow-gold: 0 0 0 1px color-mix(in oklab, var(--gold) 35%, transparent),
+    0 18px 50px -22px color-mix(in oklab, var(--gold) 55%, transparent);
+  --texture-wood: repeating-linear-gradient(
+    92deg,
+    oklch(1 0 0 / 0.022) 0px,
+    oklch(1 0 0 / 0.022) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    background-image: var(--gradient-bench);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ---------- utilities ---------- */
+
+@utility text-gold-gradient {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility panel {
+  background-color: var(--card);
+  background-image: var(--texture-wood);
+  border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-court);
+}
+
+@utility panel-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility rule-gold {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 70%, transparent),
+    transparent
+  );
+}
+
+@utility label-caps {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.68rem;
+}
+
+@utility hover-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+/* ---------- animations ---------- */
+
+@keyframes gavel-tap {
+  0%,
+  70%,
+  100% {
+    transform: rotate(-12deg);
+  }
+  80% {
+    transform: rotate(14deg);
+  }
+  88% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes seal-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px color-mix(in oklab, var(--gold) 35%, transparent));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 26px color-mix(in oklab, var(--gold) 70%, transparent));
+    opacity: 1;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(3deg);
+  }
+}
+
+@keyframes scale-swing {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes stamp-in {
+  0% {
+    transform: scale(2.4) rotate(-24deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.92) rotate(-11deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.05) rotate(-13deg);
+  }
+  100% {
+    transform: scale(1) rotate(-12deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@utility animate-gavel {
+  transform-origin: 80% 80%;
+  animation: gavel-tap 3.2s ease-in-out infinite;
+}
+
+@utility animate-seal {
+  animation: seal-glow 4s ease-in-out infinite;
+}
+
+@utility animate-float {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+@utility animate-swing {
+  transform-origin: 50% 8%;
+  animation: scale-swing 5s ease-in-out infinite;
+}
+
+@utility animate-stamp {
+  animation: stamp-in 0.7s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+
+@utility animate-rise {
+  animation: rise-in 0.5s ease-out both;
+}
+
+@utility animate-scan {
+  animation: scan-line 2.4s linear infinite;
+}
